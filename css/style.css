@@ -281,12 +281,12 @@ nav{
 .certificate a:hover {
     color: #fff;
 }
-/*  media querys  */
+/**********************  media querys  */
 @media screen and (max-width:600px){
-h1{
+    h1{
     font-size: 25px;
-}
-    .contenido-heador{
+    }
+    .contenido-header{
         width: 100%;
         height: 560 px;
         
@@ -324,12 +324,13 @@ h1{
             display: flex;
             align-items: center;
             flex-direction: column;
-            clip-path: polygon(0% at 0 0);
+            clip-path: circle(0% at 0 0);
         }
+
     .nav .hamburgueropen{
-            clip-path: polygon(150.0%  at 0 0);    
-        }
-    .nav .enlaces-header{
+        clip-path: circle(150% at 0 0);
+    }
+    .nav .enlaces-header a{
         color: #fff;
         background-color: #cf6c6c;
         text-transform: uppercase;
