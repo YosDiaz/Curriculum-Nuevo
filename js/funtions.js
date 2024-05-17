@@ -43,15 +43,41 @@ function load_page(){
         showConfirmButton: false,
         timer: 2000
       });
-
       document.getElementById("text").innerText = "El array a calcular es"+array_num;
       document.getElementById("impresion").value = array_num;
+      document.getElementById("name_search").value = var_nombre_form;
+      
+      let hour_system = new Date();
+      let dia = hour_system.getDay();
+      let month=hour_system.getMonth();
+      console.log(hour_system.getDate());
+      console.log(hour_system.getDay());
+      console.log(hour_system.getFullYear());
+      console.log(hour_system.getHours());
+      console.log(hour_system.getMilliseconds());
+      console.log(hour_system.getMinutes());
+      console.log(hour_system.getMonth());
+      console.log(hour_system.getSeconds());
+      
+      let months= ["Enero","Febrero","Marzo","Abril", "Mayo", "Junio", "Julio", "Agosto","Octubre","Septiembre", "Noviembre","Diciembre"];      
+      let dias = ["Domingo","Lunes","Martes","Miercoles","Jueves", "Viernes", "Sabado"];      
+    
+      console.log("Hoy es "+dias[dia]);
+      let dia_mes= hour_system.getMonth() +1;
+      console.log(hour_system.getDate()+"/"+dia_mes+"/"+hour_system.getFullYear());
+
+
+      document.getElementById("hour_system").value = hour_system;
+
 
 }
 function send_form(){
     let name = document.getElementById("name").value;
     let last_name = document.getElementById("last_name").value;
-    if(name.length == 0 || last_name.length == 0){
+    let pass_one = document.getElementById("pass_one").value;
+    let pass_two = document.getElementById("pass_two").value;
+
+    if(name.length == 0 || last_name.length == 0 || pass_one.length == 0 || pass_two.length == 0){
         Swal.fire({
         title: "Cajas de texto vacias",
         text: "Alguna de las cajas de texto esta vacia",
@@ -70,10 +96,27 @@ function send_form(){
         document.getElementById("last_name").style.border = "2px solid green"
         }   
 }
+
+else if(pass_one != pass_two ){
+    Swal.fire({
+        title: "Sus contraseñas no son iguales ",
+        text: "Valide sus credenciales",
+        icon: "error"
+    });
+    
+}
 else{
+    
     document.getElementById("print").innerText = "su nombre es: "+ name + " "+ last_name;
+    document.getElementById("name").style.border= "2px solid green";
+    document.getElementById("last_name").style.border = "2px solid green";
+    
+    consolo.log(Number.NaN(name));
 }
+
 }
+   
+
 
 //ARRAYS
 var array_semana = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
@@ -158,10 +201,14 @@ function eliminar_prim(){
 function agregar(){
     let num = document.getElementById("num").value
     let array_add = array_numerico.push(num);
+    if(isNaN(num)== true){
+        Swal.fire("Solo se aceptan numeros")
+    }
+    else {
+    let array_add=array_numerico.push(num);
     console.log(array_add);
-    console.log(array_numerico);
     document.getElementById("impresion").value=array_numerico;
-
+    }
 }
 function agregar_prim(){
     let num = document.getElementById("num").value
@@ -176,8 +223,30 @@ function limpiar(){
     document.getElementById("name").value="";
     document.getElementById("last_name").value="";
     document.getElementById("result").innerText="";
-    
 
+}
+
+var_nombre_form="Wilder Andres Duarte Neira";
+
+function search(){
+    let nombre_buscar = document.getElementById("name_search").value;
+    // Swal.fire(nombre_buscar.toLowerCase()); //toUperCase() Mayuscula
+    // Swal.fire({
+    //     title: nombre_buscar.toLowerCase(),
+    //     text: "Alguna de las cajas de texto se encuentra vacia",
+    //     icon: "error"
+    // });
     
+    // let word = nombre_buscar.indexOf("D");
+    // console.log(word);
+    // Swal.fire(word+"");
+    
+    // let word = nombre_buscar.lastIndexOf("e");
+    // let word = nombre_buscar.substring("5");
+    let word = nombre_buscar.split("");
+    Swal.fire(word+"");
+    console.log(word);
+    let  word_com = word.join("");
+    console.log(word_com);
 
 }
